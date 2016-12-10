@@ -5,14 +5,14 @@ import './App.css';
 import instagram from './instagram.svg';
 import github from './github.svg';
 
-const photos = [
-  './photos/20161113-_DSC1440.jpg',
-  './photos/20161118-_DSC1476.jpg',
-  './photos/20161118-_DSC1492.jpg',
-  './photos/20161127-_DSC1515.jpg',
-  './photos/20161203-_DSC1575.jpg',
-  './photos/20161203-_DSC1581.jpg'
-];
+// Gets all of the image filenames in the /photos directory
+const context = require.context('./photos', true, /\.jpg$/);
+const photos = context.keys();
+
+// Re-formats the file path context returns in order to require the photo
+const filePath = (file) => {
+  return file.replace('./', './photos/');
+};
 
 class App extends Component {
 
@@ -20,16 +20,28 @@ class App extends Component {
     activePhoto: 0
   };
 
-  nextPhoto = () => {
-    if (this.state.activePhoto + 1 < photos.length) {
-      this.setState({
-        activePhoto: this.state.activePhoto + 1
-      });
+  getNextPhoto() {
+    if (this.state.activePhoto + 1 !== photos.length) {
+      return this.state.activePhoto + 1;
     } else {
-      this.setState({
-        activePhoto: 0
-      });
+      return 0;
     }
+  }
+
+  getPrevPhoto() {
+    if (this.state.activePhoto - 1 < 0) {
+      return photos.length - 1;
+    } else {
+      return this.state.activePhoto - 1;
+    }
+  }
+
+  nextPhoto = () => {
+    this.setState({activePhoto: this.getNextPhoto()});
+  }
+
+  prevPhoto = () => {
+    this.setState({activePhoto: this.getPrevPhoto()});
   }
 
   render() {
@@ -48,15 +60,16 @@ class App extends Component {
             </a>
           </div>
           <div className="actions">
-            <button>Prev</button>/<button>Next</button>
+            <button className="btn-link" onClick={this.prevPhoto}>Prev</button>/
+            <button className="btn-link" onClick={this.nextPhoto}>Next</button>
           </div>
         </div>
         <div className="content">
           <div className="photo">
-            <img src={require(photos[this.state.activePhoto])} alt="photo"/>
+            <img src={require(filePath(photos[this.state.activePhoto]))} alt="photo"/>
           </div>
           <div className="next-photo" onClick={this.nextPhoto}>
-            <img src={require(photos[this.state.activePhoto + 1])} alt="photo"/>
+            <img src={require(filePath(photos[this.getNextPhoto()]))} alt="photo"/>
           </div>
         </div>
       </div>
