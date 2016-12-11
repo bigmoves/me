@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 // Svgs
 import instagram from './instagram.svg';
 import github from './github.svg';
@@ -14,12 +16,29 @@ const filePath = (file) => {
   return file.replace('./', './photos/');
 };
 
+/**
+ * Main app component
+ * @class App
+ * @constructor
+ * @extends React.Component
+ */
 class App extends Component {
+
+  // State
+  //----------------------------------------------------------------------------
 
   state = {
     activePhoto: 0
   };
 
+  // Methods
+  //----------------------------------------------------------------------------
+
+  /**
+   * Gets the next photo index
+   * @method getNextPhoto
+   * @return {number}
+   */
   getNextPhoto() {
     if (this.state.activePhoto + 1 !== photos.length) {
       return this.state.activePhoto + 1;
@@ -27,7 +46,11 @@ class App extends Component {
       return 0;
     }
   }
-
+  /**
+   * Gets the previous photo index
+   * @method getPrevPhoto
+   * @return {number}
+   */
   getPrevPhoto() {
     if (this.state.activePhoto - 1 < 0) {
       return photos.length - 1;
@@ -36,13 +59,28 @@ class App extends Component {
     }
   }
 
+  // Events
+  //----------------------------------------------------------------------------
+
+  /**
+   * Sets the next photo to display
+   * @event nextPhoto
+   * @return {undefined}
+   */
   nextPhoto = () => {
     this.setState({activePhoto: this.getNextPhoto()});
   }
-
+  /**
+   * Sets the previous photo to display
+   * @event prevPhoto
+   * @return {undefined}
+   */
   prevPhoto = () => {
     this.setState({activePhoto: this.getPrevPhoto()});
   }
+
+  // Render
+  //----------------------------------------------------------------------------
 
   render() {
     return (
@@ -65,9 +103,14 @@ class App extends Component {
           </div>
         </div>
         <div className="content">
-          <div className="photo">
-            <img src={require(filePath(photos[this.state.activePhoto]))} alt="photo"/>
-          </div>
+          <ReactCSSTransitionGroup
+            component="div"
+            className="photo"
+            transitionName="carosel"
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={1000}>
+            <img src={require(filePath(photos[this.state.activePhoto]))} key={photos[this.state.activePhoto]} alt="photo"/>
+          </ReactCSSTransitionGroup>
           <div className="next-photo" onClick={this.nextPhoto}>
             <img src={require(filePath(photos[this.getNextPhoto()]))} alt="photo"/>
           </div>

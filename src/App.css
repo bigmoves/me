@@ -33,12 +33,35 @@
 }
 
 .photo {
+  position: relative;
   flex: 1;
+  z-index: 20;
 }
 
 .photo img {
-  height: 100%;
   width: 100%;
+}
+
+.carosel-enter {
+  z-index: 20;
+  position: absolute;
+  transform: translateX(100%);
+  opacity: 0.2;
+}
+
+.carosel-enter.carosel-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: 1000ms ease-in-out;
+}
+
+.carosel-leave {
+  z-index: 10;
+}
+
+.carosel-leave.carosel-leave-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-out;
 }
 
 .next-photo {
@@ -46,6 +69,7 @@
   flex: 1;
   opacity: 0.2;
   cursor: pointer;
+  z-index: 10;
 }
 
 .next-photo img {
