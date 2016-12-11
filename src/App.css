@@ -1,24 +1,93 @@
-.App {
-  text-align: center;
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 250px;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.sidebar h1 {
+  margin: 0;
 }
 
-.App-intro {
-  font-size: large;
+.links {
+  margin: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.links img {
+  margin: 0 5px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+
+.photo {
+  position: relative;
+  flex: 1;
+  z-index: 20;
+}
+
+.photo img {
+  width: 100%;
+}
+
+.carosel-enter {
+  z-index: 20;
+  position: absolute;
+  transform: translateX(100%);
+  opacity: 0.2;
+}
+
+.carosel-enter.carosel-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: 1000ms ease-in-out;
+}
+
+.carosel-leave {
+  z-index: 10;
+}
+
+.carosel-leave.carosel-leave-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-out;
+}
+
+.next-photo {
+  margin-right: -90%;
+  flex: 1;
+  opacity: 0.2;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.next-photo img {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .app, .content {
+    flex-direction: column;
+  }
+}
+
+.btn-link {
+  border-radius: 0;
+  cursor: pointer;
+  user-select: none;
+  padding: .5rem .5rem;
+  background-color: transparent;
+  border-color: transparent;
 }
