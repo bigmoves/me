@@ -31,6 +31,26 @@ class App extends Component {
     activePhoto: 0
   };
 
+  // Hooks
+  //----------------------------------------------------------------------------
+
+  /**
+   * Attach event listeners
+   * @method componentDidMount
+   * @return {undefined}
+   */
+  componentDidMount() {
+    window.addEventListener('keyup', this.keyUp);
+  }
+  /**
+   * Remove event listeners
+   * @method componentWillUnmount
+   * @return {undefined}
+   */
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.keyUp);
+  }
+
   // Methods
   //----------------------------------------------------------------------------
 
@@ -62,6 +82,18 @@ class App extends Component {
   // Events
   //----------------------------------------------------------------------------
 
+  /**
+   * Handle arrow key events
+   * @param  {object} e Javascript event
+   * @return {undefined}
+   */
+  keyUp = (e) => {
+    if (e.key === 'ArrowRight') {
+      this.nextPhoto();
+    } else if (e.key === 'ArrowLeft') {
+      this.prevPhoto();
+    }
+  }
   /**
    * Sets the next photo to display
    * @event nextPhoto
