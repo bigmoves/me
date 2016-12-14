@@ -92,7 +92,7 @@
     flex-direction: column;
   }
 
-  .content {
+  .actions, .content {
     display: none;
   }
 
