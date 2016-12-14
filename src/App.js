@@ -147,6 +147,13 @@ class App extends Component {
             <img src={require(filePath(photos[this.getNextPhoto()]))} alt="photo"/>
           </div>
         </div>
+        <div className="mobile-content">
+          {photos.map(photo => (
+            <div className="photo" key={photo}>
+              <img src={require(filePath(photo))} alt="photo"/>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

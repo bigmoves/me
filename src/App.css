@@ -32,6 +32,16 @@
   overflow: hidden;
 }
 
+.mobile-content {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+}
+
+.mobile-content .photo img {
+  height: 100%;
+}
+
 .photo {
   position: relative;
   flex: 1;
@@ -77,9 +87,17 @@
   width: 100%;
 }
 
-@media (max-width: 1024px) {
-  .app, .content {
+@media (max-width: 600px) {
+  .app {
     flex-direction: column;
+  }
+
+  .content {
+    display: none;
+  }
+
+  .mobile-content {
+    display: flex;
   }
 }
 
