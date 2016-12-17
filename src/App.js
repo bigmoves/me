@@ -8,7 +8,7 @@ import instagram from './instagram.svg';
 import github from './github.svg';
 
 // Gets all of the image filenames in the /photos directory
-const context = require.context('./photos', true, /\.jpg$/);
+const context = require.context('./photos', true, /\.(jpg|jpeg)$/);
 const photos = context.keys();
 
 // Re-formats the file path context returns in order to require the photo
@@ -84,6 +84,7 @@ class App extends Component {
 
   /**
    * Handle arrow key events
+   * @event keyUp
    * @param  {object} e Javascript event
    * @return {undefined}
    */
