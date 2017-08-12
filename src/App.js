@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import './_App.css';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// Components
+import Main from './Main';
+import About from './About';
+import Contact from './Contact';
+import Prints from './Prints';
+import Print from './Print';
+import CartToast from './CartToast';
+import Cart from './Cart';
 
 // Svgs
-import instagram from './instagram.svg';
-import github from './github.svg';
-
-// Gets all of the image filenames in the /photos directory
-const context = require.context('./photos', true, /\.(jpg|jpeg)$/);
-const photos = context.keys();
-
-// Re-formats the file path context returns in order to require the photo
-const filePath = (file) => {
-  return file.replace('./', './photos/');
-};
+import instagram from './icons/instagram.svg';
+import github from './icons/github.svg';
 
 /**
  * Main app component
@@ -23,139 +22,54 @@ const filePath = (file) => {
  * @extends React.Component
  */
 class App extends Component {
-
-  // State
-  //----------------------------------------------------------------------------
-
-  state = {
-    activePhoto: 0
-  };
-
-  // Hooks
-  //----------------------------------------------------------------------------
-
-  /**
-   * Attach event listeners
-   * @method componentDidMount
-   * @return {undefined}
-   */
-  componentDidMount() {
-    window.addEventListener('keyup', this.keyUp);
-  }
-  /**
-   * Remove event listeners
-   * @method componentWillUnmount
-   * @return {undefined}
-   */
-  componentWillUnmount() {
-    window.removeEventListener('keyup', this.keyUp);
-  }
-
-  // Methods
-  //----------------------------------------------------------------------------
-
-  /**
-   * Gets the next photo index
-   * @method getNextPhoto
-   * @return {number}
-   */
-  getNextPhoto() {
-    if (this.state.activePhoto + 1 !== photos.length) {
-      return this.state.activePhoto + 1;
-    } else {
-      return 0;
-    }
-  }
-  /**
-   * Gets the previous photo index
-   * @method getPrevPhoto
-   * @return {number}
-   */
-  getPrevPhoto() {
-    if (this.state.activePhoto - 1 < 0) {
-      return photos.length - 1;
-    } else {
-      return this.state.activePhoto - 1;
-    }
-  }
-
-  // Events
-  //----------------------------------------------------------------------------
-
-  /**
-   * Handle arrow key events
-   * @event keyUp
-   * @param  {object} e Javascript event
-   * @return {undefined}
-   */
-  keyUp = (e) => {
-    if (e.key === 'ArrowRight') {
-      this.nextPhoto();
-    } else if (e.key === 'ArrowLeft') {
-      this.prevPhoto();
-    }
-  }
-  /**
-   * Sets the next photo to display
-   * @event nextPhoto
-   * @return {undefined}
-   */
-  nextPhoto = () => {
-    this.setState({activePhoto: this.getNextPhoto()});
-  }
-  /**
-   * Sets the previous photo to display
-   * @event prevPhoto
-   * @return {undefined}
-   */
-  prevPhoto = () => {
-    this.setState({activePhoto: this.getPrevPhoto()});
-  }
-
   // Render
   //----------------------------------------------------------------------------
-
   render() {
     return (
-      <div className="app">
-        <div className="sidebar">
-          <h1>Chad Miller</h1>
-          <span>Software developer</span>
-          <span>Adventurer</span>
-          <div className="links">
-            <a href="https://www.instagram.com/chadtmiller" target="_blank">
-              <img src={instagram}/>
-            </a>
-            <a href="https://github.com/bigmoves" target="_blank">
-              <img src={github}/>
-            </a>
-          </div>
-          <div className="actions">
-            <button className="btn-link" onClick={this.prevPhoto}>Prev</button>/
-            <button className="btn-link" onClick={this.nextPhoto}>Next</button>
-          </div>
-        </div>
-        <div className="content">
-          <ReactCSSTransitionGroup
-            component="div"
-            className="photo"
-            transitionName="carosel"
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}>
-            <img src={require(filePath(photos[this.state.activePhoto]))} key={photos[this.state.activePhoto]} alt="photo"/>
-          </ReactCSSTransitionGroup>
-          <div className="next-photo" onClick={this.nextPhoto}>
-            <img src={require(filePath(photos[this.getNextPhoto()]))} alt="photo"/>
-          </div>
-        </div>
-        <div className="mobile-content">
-          {photos.map(photo => (
-            <div className="photo" key={photo}>
-              <img src={require(filePath(photo))} alt="photo"/>
+      <Router>
+        <div className="app">
+          <CartToast />
+          <div className="sidebar">
+            <h1>Chad Miller</h1>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Collections</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact</Link>
+                </li>
+                <li>
+                  <Link to="/prints">Prints</Link>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="links">
+              <button className="btn-link">
+                <img src={instagram} />
+              </button>
+              <button className="btn-link">
+                <img src={github} />
+              </button>
             </div>
-          ))}
+          </div>
+          <div className="page">
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/print/:id" component={Print} />
+              <Route path="/prints" component={Prints} />
+              <Route path="/cart" component={Cart} />
+              <Route render={() => <div>Not found.</div>} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
