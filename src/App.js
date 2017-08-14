@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import './_App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Switch,
+  matchPath
+} from 'react-router-dom';
+import './App.css';
 
 // Components
-import Main from './Main';
+import Collection from './Collection';
+import Photo from './Photo';
 import About from './About';
 import Contact from './Contact';
 import Prints from './Prints';
@@ -14,6 +22,7 @@ import Cart from './Cart';
 // Svgs
 import instagram from './icons/instagram.svg';
 import github from './icons/github.svg';
+import paperplane from './icons/paperplane.svg';
 
 /**
  * Main app component
@@ -28,38 +37,71 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <CartToast />
           <div className="sidebar">
-            <h1>Chad Miller</h1>
+            <h1>
+              <Link to="/">Chad Miller</Link>
+            </h1>
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Collections</Link>
+                  <Link to="/totally-rad">Collections</Link>
+                  <div>
+                    <ul>
+                      <li>
+                        <NavLink to="/totally-rad">
+                          Adventures with friends
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/outside">Explore Outside</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/climbing">Climbing</NavLink>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <NavLink to="/about">About</NavLink>
                 </li>
                 <li>
-                  <Link to="/contact">Contact</Link>
-                </li>
-                <li>
-                  <Link to="/prints">Prints</Link>
+                  <NavLink to="/contact">Contact</NavLink>
                 </li>
               </ul>
             </nav>
 
             <div className="links">
-              <button className="btn-link">
+              <a href="https://www.instagram.com/chadtmiller" target="_blank">
                 <img src={instagram} />
-              </button>
-              <button className="btn-link">
+              </a>
+              <a href="https://github.com/bigmoves" target="_blank">
                 <img src={github} />
-              </button>
+              </a>
+              <a href="mailto:chadtmiller15@gmail.com">
+                <img src={paperplane} width="24" height="28" />
+              </a>
             </div>
           </div>
           <div className="page">
             <Switch>
-              <Route exact path="/" component={Main} />
+              <Route
+                exact
+                path="/"
+                render={() => <Collection folder="explore" />}
+              />
+              <Route
+                path="/totally-rad"
+                render={() => <Collection folder="totally-rad" />}
+              />
+              <Route
+                path="/outside"
+                render={() => <Collection folder="explore" />}
+              />
+              <Route
+                path="/climbing"
+                render={() => <Collection folder="climbing" />}
+              />
+              <Route path="/photos/:id" component={Photo} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/print/:id" component={Print} />

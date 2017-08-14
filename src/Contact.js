@@ -6,16 +6,10 @@ export default class Contact extends Component {
       <div className="contact">
         <form>
           <p>
-            <input type="text" placeholder="first" />
-          </p>
-          <p>
-            <input type="text" placeholder="last" />
+            <input type="text" placeholder="name" />
           </p>
           <p>
             <input type="text" placeholder="email" />
-          </p>
-          <p>
-            <input type="text" placeholder="subject" />
           </p>
           <p>
             <textarea placeholder="message" />

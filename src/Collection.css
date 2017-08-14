@@ -1,30 +1,33 @@
-.prints {
+.photos {
   /* Prevent vertical gaps */
   line-height: 0;
   column-count: 3;
-  column-gap: 5px;
+  column-gap: 10px;
 }
 
-.prints img {
+.photos img {
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  margin-bottom: 5px;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1300px) {
-  .prints {
+  .photos {
     column-count: 2;
   }
 }
 
-@media (max-width: 800px) {
-  .prints {
+@media (max-width: 1000px) {
+  .photos {
     column-count: 1;
   }
 }
 
-.print:hover {
+.photo {
+  cursor: pointer;
+}
+
+.photo:hover {
   opacity: 0.9;
 }
