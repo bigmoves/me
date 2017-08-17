@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { string } from 'prop-types';
 
-import './Collection.css';
+import './Collection.scss';
 
 // Gets all of the image filenames in the /photos directory
 const context = require.context(`./photos`, true, /\.(jpg|jpeg)$/);
@@ -40,9 +40,9 @@ class Collection extends Component {
   render() {
     return (
       <div className="photos">
-        {this.state.photos.map((photo, i) =>
-          <div key={i} className="photo" onClick={() => this.goToPhoto(photo)}>
-            <img src={context(photo)} alt="photo" />
+        {this.state.photos.map((photoPath, i) =>
+          <div key={i} className="photo" onClick={() => this.goToPhoto(photoPath)}>
+            <img src={context(photoPath)} alt="photo" />
           </div>
         )}
       </div>
