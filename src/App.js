@@ -19,6 +19,7 @@ import Prints from './Prints';
 import Print from './Print';
 import CartToast from './CartToast';
 import Cart from './Cart';
+import SidebarPhotoControls from './SidebarPhotoControls';
 
 // Svgs
 import instagram from './icons/instagram.svg';
@@ -50,14 +51,13 @@ class App extends Component {
                       <NavLink to="/totally-rad">Adventures with friends</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/outside">Explore Outside</NavLink>
+                      <NavLink to="/outside">Exploring outside</NavLink>
                     </li>
                     <li>
                       <NavLink to="/climbing">Climbing</NavLink>
                     </li>
                   </ul>
                 </nav>
-
                 <div className="links">
                   <a href="https://www.instagram.com/chadtmiller" target="_blank">
                     <img src={instagram} />
@@ -69,6 +69,10 @@ class App extends Component {
                     <img src={paperplane} width="24" height="28" />
                   </a>
                 </div>
+                <Route
+                  path="(/climbing/.*|/outside/.*|/totally-rad/.*)"
+                  render={() => <SidebarPhotoControls />}
+                />
               </div>
               <Fade className="page">
                 <Switch key={location.key} location={location}>
@@ -76,6 +80,18 @@ class App extends Component {
                     exact
                     path="/"
                     render={() => <Collection folder="explore" />}
+                  />
+                  <Route
+                    path="/totally-rad/:id"
+                    render={() => <Photo folder="totally-rad" />}
+                  />
+                  <Route
+                    path="/explore/:id"
+                    render={() => <Photo folder="explore" />}
+                  />
+                  <Route
+                    path="/climbing/:id"
+                    render={() => <Photo folder="climbing" />}
                   />
                   <Route
                     path="/totally-rad"
@@ -89,7 +105,6 @@ class App extends Component {
                     path="/climbing"
                     render={() => <Collection folder="climbing" />}
                   />
-                  <Route path="/photos/:id" component={Photo} />
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
                   <Route path="/print/:id" component={Print} />

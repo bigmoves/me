@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { string } from 'prop-types';
 
-import './Collection.scss';
+import './Collection.css';
 
 // Gets all of the image filenames in the /photos directory
 const context = require.context(`./photos`, true, /\.(jpg|jpeg)$/);
@@ -27,13 +27,13 @@ class Collection extends Component {
 
   updatePhotos(folder) {
     const photos = photoPaths.filter(photo => photo.indexOf(folder) > -1);
-    console.log(photos);
     this.setState({ photos });
   }
 
   goToPhoto = photo => {
-    this.props.history.push(
-      `/photos/${photo.replace(/^.*[\\\/]/, '').split('.').shift()}`
+    const { folder, history } = this.props;
+    history.push(
+      `/${folder}/${photo.replace(/^.*[\\\/]/, '').split('.').shift()}`
     );
   };
 
