@@ -24,10 +24,12 @@
   }
 }
 
-.photo {
-  cursor: pointer;
-}
+@media (min-width: 800px) {
+  .photo {
+    cursor: pointer;
+  }
 
-.photo:hover {
-  opacity: 0.90;
+  .photo:hover {
+    opacity: 0.90;
+  }
 }

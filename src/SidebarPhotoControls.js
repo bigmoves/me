@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './SidebarPhotoControls.css';
+
 export default class SidebarPhotoControls extends Component {
   render() {
     return (
@@ -9,7 +11,7 @@ export default class SidebarPhotoControls extends Component {
           <button className="btn-link">Next</button>
         </div>
         <div>
-          <button className="btn-link">Thumbnails</button>
+          <button className="btn-link">Show thumbnails</button>
         </div>
       </div>
     );

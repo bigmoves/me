@@ -4,10 +4,21 @@
   height: 100%;
 }
 
+@media (min-width: 800px) {
+  .page {
+    overflow: auto;
+  }
+}
+
 @media (max-width: 800px) {
   .app {
     flex-direction: column;
     height: 100%;
+  }
+
+  .sidebar {
+    display: block !important;
+    text-align: center;
   }
 }
 
@@ -60,14 +71,6 @@
   }
 }
 
-.sidebar-photo-controls {
-  position: absolute;
-  bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .logo {
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 36px;
@@ -85,7 +88,6 @@
 .page {
   flex: 1;
   padding: 10px;
-  overflow: auto;
 }
 
 .links a {
@@ -122,4 +124,18 @@
 .fade-leave.fade-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .mobile-nav {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
 }

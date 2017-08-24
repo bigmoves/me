@@ -21,6 +21,16 @@ class Collection extends Component {
     this.updatePhotos(this.props.folder);
   }
 
+  componentDidMount() {
+    const state = this.props.location.state || {};
+
+    setTimeout(() => {
+      if (state.previousImage) {
+        location.href = `#` + state.previousImage;
+      }
+    }, 0);
+  }
+
   componentWillReceiveProps({ folder }) {
     this.updatePhotos(folder);
   }
@@ -41,7 +51,17 @@ class Collection extends Component {
     return (
       <div className="photos">
         {this.state.photos.map((photoPath, i) =>
-          <div key={i} className="photo" onClick={() => this.goToPhoto(photoPath)}>
+          <div
+            id={photoPath}
+            key={i}
+            className="photo"
+            onClick={() => {
+              // only allow click through to photo page on desktop
+              if (window.matchMedia('(min-width: 800px)').matches) {
+                this.goToPhoto(photoPath);
+              }
+            }}
+          >
             <img src={context(photoPath)} alt="photo" />
           </div>
         )}

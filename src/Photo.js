@@ -80,7 +80,9 @@ class Photo extends Component {
   };
 
   handleCenter = () => {
-    this.props.history.push(`/${this.props.folder}`);
+    this.props.history.push(`/${this.props.folder}`, {
+      previousImage: this.state.photo
+    });
   };
 
   render() {

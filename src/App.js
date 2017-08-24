@@ -42,13 +42,33 @@ class App extends Component {
           render={({ location }) =>
             <div className="app">
               <div className="sidebar">
+                <nav className="mobile-nav">
+                  <ul>
+                    <li>
+                      <NavLink to="/totally-rad">
+                        Adventures with friends
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/outside">Exploring outside</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/climbing">Climbing</NavLink>
+                    </li>
+                  </ul>
+                </nav>
+                <div className="">
+                  <button className="btn-link">Menu</button>
+                </div>
                 <h1 className="logo">
                   <Link to="/">Chad Miller</Link>
                 </h1>
-                <nav>
+                <nav className="desktop-nav">
                   <ul>
                     <li>
-                      <NavLink to="/totally-rad">Adventures with friends</NavLink>
+                      <NavLink to="/totally-rad">
+                        Adventures with friends
+                      </NavLink>
                     </li>
                     <li>
                       <NavLink to="/outside">Exploring outside</NavLink>
@@ -59,7 +79,10 @@ class App extends Component {
                   </ul>
                 </nav>
                 <div className="links">
-                  <a href="https://www.instagram.com/chadtmiller" target="_blank">
+                  <a
+                    href="https://www.instagram.com/chadtmiller"
+                    target="_blank"
+                  >
                     <img src={instagram} />
                   </a>
                   <a href="https://github.com/bigmoves" target="_blank">
