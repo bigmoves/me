@@ -8,7 +8,6 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Prints from './components/Prints';
 import Print from './components/Print';
-import CartToast from './components/CartToast';
 import Cart from './components/Cart';
 import Sidebar from './components/Sidebar';
 

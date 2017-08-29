@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+
+// Feature flags
+import './utils/feature-flags';
+
+// Styles
 import './index.css';
 
 // Redux stuff

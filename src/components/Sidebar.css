@@ -1,7 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex-basis: 250px;
+  flex-basis: 300px;
   align-items: center;
   margin-bottom: 30px;
   justify-content: center;
@@ -11,14 +11,6 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.sidebar ul ul {
-  margin-left: 10px;
-}
-
-.sidebar nav {
-  margin-bottom: 30px;
 }
 
 .sidebar nav a {
@@ -44,10 +36,6 @@
 @media (max-width: 800px) {
   .sidebar {
     display: block !important;
-    text-align: center;
-  }
-
-  .sidebar nav {
     text-align: center;
   }
 }

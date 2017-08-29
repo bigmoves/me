@@ -1,10 +1,9 @@
-.mobile-nav ul {
-  padding: 10px 0;
+.mobile-nav {
+  text-align: center;
 }
 
-.menu-toggle {
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+.mobile-nav nav {
+  padding: 10px 0;
 }
 
 .menu-toggle button:hover {
