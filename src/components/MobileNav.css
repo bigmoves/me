@@ -1,0 +1,22 @@
+.mobile-nav ul {
+  padding: 10px 0;
+}
+
+.menu-toggle {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.menu-toggle button:hover {
+  box-shadow: none;
+}
+
+.menu-toggle button {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .mobile-nav {
+    display: none;
+  }
+}

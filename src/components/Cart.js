@@ -20,9 +20,6 @@ export default class Cart extends Component {
               <th>
                 <div className="item">
                   <div className="remove-item">x</div>
-                  <img
-                    src={require(`./photos/122e5e2a7d6d444e9191f823fbe50388.jpeg`)}
-                  />
                   <div className="item-description">
                     <Link to={`/print/122e5e2a7d6d444e9191f823fbe50388`}>
                       Image Title

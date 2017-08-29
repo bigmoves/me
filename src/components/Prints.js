@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 // Gets all of the image filenames in the /photos directory
-const context = require.context('./prints', true, /\.(jpg|jpeg)$/);
+const context = require.context('../prints', true, /\.(jpg|jpeg)$/);
 const photos = context.keys();
 
 // Re-formats the file path context returns in order to require the photo

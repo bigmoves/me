@@ -1,0 +1,9 @@
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .desktop-nav {
+    display: block;
+  }
+}

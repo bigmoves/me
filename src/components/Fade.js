@@ -7,7 +7,7 @@ const Fade = ({ children, ...props }) =>
     component="div"
     transitionName="fade"
     transitionEnterTimeout={300}
-    transitionLeaveTimeout={300}
+    transitionLeaveTimeout={1}
   >
     {children}
   </CSSTransitionGroup>;

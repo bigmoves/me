@@ -17,7 +17,7 @@ class Print extends Component {
 
         <div className="print-content">
           <div className="image">
-            <img src={require(`./prints/${photo}.jpg`)} />
+            <img src={require(`../prints/${photo}.jpg`)} />
           </div>
           <div className="print-info">
             <h1>Print Title</h1>
