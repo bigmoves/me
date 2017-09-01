@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 // Feature flags
-import './utils/feature-flags';
+import { setupFlags } from '@crystal-ball/feature-flag';
+setupFlags({
+  prints: true,
+  about: false,
+  contact: false
+});
 
 // Styles
 import './index.css';

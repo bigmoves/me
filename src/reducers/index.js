@@ -31,8 +31,32 @@ const photosByFolder = (state = [], action) => {
   }, {});
 };
 
+const cart = (state = { items: [], total: 0 }, action) => {
+  const { item } = action;
+
+  if (action.type === 'ADD_TO_CART') {
+    // don't add duplicates
+    // if (state.items.find(i => (i.img === cartitem.img) && ())) {
+    //   return state;
+    // }
+
+    state.items = [...state.items, action.item];
+    state.items.forEach(i => (state.total += +i.price * i.quantity));
+  } else if (action.type === 'REMOVE_FROM_CART') {
+    const index = state.items.findIndex(i => i.img === action.item.img);
+    state.items = [...state.items.slice(0, index), ...state.items.slice(index + 1)];
+    state.total = 0;
+    state.items.forEach(i => (state.total += +i.price * i.quantity));
+  }
+
+  return {
+    ...state
+  };
+};
+
 const rootReducer = combineReducers({
   app,
+  cart,
   photos,
   photosByFolder,
   router: routerReducer

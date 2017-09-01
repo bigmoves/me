@@ -1,6 +1,5 @@
 .cart-toast {
   position: fixed;
-  padding: 0 5px;
   top: 0;
   right: 0;
   color: white;
@@ -8,16 +7,34 @@
   width: 200px;
   margin: 10px;
   border-radius: 5px;
-  z-index: 1000;
+  z-index: 1001;
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  border: 3px solid aqua;
 }
 
-.cart-total {
+.cart-toast a {
+  color: aqua;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.cart-toast a:visited {
+  color: aqua;
+}
+
+.cart-toast svg {
+  fill: aqua;
+  margin-right: 5px;
+}
+
+.item-count {
   flex: 1;
-}
-
-.checkout-btn {
-  color: white;
 }

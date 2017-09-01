@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { number } from 'prop-types';
 
 import './CartToast.css';
 
+// Icons
+import { shoppingCart } from '../icons/shopping-cart';
+console.log(shoppingCart);
+
 class CartToast extends Component {
+  static propTypes = {
+    itemCount: number,
+    total: number
+  };
+
   render() {
+    if (!this.props.total) {
+      return null;
+    }
+
     return (
       <div className="cart-toast">
-        <div className="cart-total">Total: $40</div>
-        <button
-          className="checkout-btn btn-link"
-          onClick={() => this.props.history.push('/cart')}
-        >
-          Cart
-        </button>
+        <Link to="/cart">
+          {shoppingCart}
+          <div className="item-count">
+            {this.props.itemCount} item{`${this.props.itemCount > 1 ? 's' : ''}`}
+          </div>
+          <div className="total">
+            {new Intl.NumberFormat('en', {
+              style: 'currency',
+              currency: 'USD'
+            }).format(this.props.total)}
+          </div>
+        </Link>
       </div>
     );
   }
 }
 
-export default withRouter(CartToast);
+export default CartToast;
