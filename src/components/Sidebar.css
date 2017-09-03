@@ -1,0 +1,60 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 250px;
+  padding-left: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar nav a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: #222;
+}
+
+.sidebar nav a:visited {
+  color: #222;
+}
+
+.sidebar .active {
+  text-decoration: none;
+  border-bottom: 3px solid aqua;
+  box-shadow: inset 0 -4px 0 aqua;
+}
+
+.sidebar nav a:hover {
+  background-color: aqua;
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    display: block !important;
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+.logo {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 36px;
+}
+
+.logo a {
+  color: #222;
+  text-decoration: none;
+}
+
+.logo a:visited {
+  color: #222;
+}
+
+.links a {
+  margin-right: 5px;
+}

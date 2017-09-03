@@ -1,0 +1,23 @@
+.back-btn {
+  margin: 10px 0;
+}
+
+.print-content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.image {
+  cursor: pointer;
+  flex: 1;
+}
+
+.image img {
+  width: 100%;
+}
+
+.print-info {
+  flex: 1;
+  padding-left: 10px;
+}

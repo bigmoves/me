@@ -1,0 +1,21 @@
+.mobile-nav {
+  text-align: center;
+}
+
+.mobile-nav nav {
+  padding: 10px 0;
+}
+
+.menu-toggle button:hover {
+  box-shadow: none;
+}
+
+.menu-toggle button {
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .mobile-nav {
+    display: none;
+  }
+}

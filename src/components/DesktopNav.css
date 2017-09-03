@@ -1,0 +1,15 @@
+.desktop-nav {
+  display: none;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.desktop-nav li {
+  /* margin-bottom: 2px; */
+}
+
+@media (min-width: 800px) {
+  .desktop-nav {
+    display: block;
+  }
+}

@@ -1,0 +1,17 @@
+:local(.component) {
+  border-radius: 3px;
+  color: black;
+  background-color: transparent;
+  border: 2px solid aqua;
+  /* text-transform: uppercase; */
+  line-height: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+:local(.component:hover) {
+  background-color: black;
+  color: aqua;
+  transition: 0.1s background-color linear, 0.1s color linear;
+}
