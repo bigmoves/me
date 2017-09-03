@@ -28,17 +28,15 @@ class Collection extends Component {
   // }
 
   render() {
+    let style = {};
+
+    if (window.matchMedia('(min-width: 800px)').matches) {
+      style.display =
+        this.state.imgLoadCount === this.props.photos.length ? 'block' : 'none';
+    }
+
     return (
-      <div
-        className="photos"
-        style={{
-          display:
-            window.matchMedia('(min-width: 800px)').matches &&
-            this.state.imgLoadCount === this.props.photos.length
-              ? 'block'
-              : 'none'
-        }}
-      >
+      <div className="photos" style={style}>
         {this.props.photos.map((photoPath, i) => (
           <div
             id={photoPath}
