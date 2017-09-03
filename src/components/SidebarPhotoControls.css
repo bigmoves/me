@@ -4,4 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
+}
+
+.sidebar-photo-controls button {
+  font-size: 0.75rem;
 }

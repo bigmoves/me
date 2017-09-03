@@ -33,10 +33,13 @@ class Collection extends Component {
         className="photos"
         style={{
           display:
-            this.state.imgLoadCount === this.props.photos.length ? 'block' : 'none'
+            window.matchMedia('(min-width: 800px)').matches &&
+            this.state.imgLoadCount === this.props.photos.length
+              ? 'block'
+              : 'none'
         }}
       >
-        {this.props.photos.map((photoPath, i) =>
+        {this.props.photos.map((photoPath, i) => (
           <div
             id={photoPath}
             key={i}
@@ -52,10 +55,10 @@ class Collection extends Component {
               src={context(photoPath)}
               alt="photo"
               onLoad={() =>
-                this.setState({ imgLoadCount: (this.state.imgLoadCount += 1) })}
+                this.setState({ imgLoadCount: this.state.imgLoadCount + 1 })}
             />
           </div>
-        )}
+        ))}
       </div>
     );
   }

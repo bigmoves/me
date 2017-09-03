@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, NavLink, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import './App.css';
 
 // Components
@@ -15,7 +15,7 @@ import { FeatureFlag } from '@crystal-ball/feature-flag';
 // Containers
 import CartToast from './containers/CartToast';
 import Collection from './containers/Collection';
-import Photo from './containers/Photo';
+import PhotoPage from './containers/PhotoPage';
 import Prints from './containers/Prints';
 import Print from './containers/Print';
 
@@ -39,30 +39,33 @@ class App extends Component {
         <Sidebar />
         <Fade className="page">
           <Switch key={this.props.location.key} location={this.props.location}>
-            <Route exact path="/" render={() => <Collection folder="outside" />} />
+            <Route exact path="/" render={() => <Redirect to="/outside" />} />
             <Route
               path="/totally-rad/:id"
               render={({ match }) => (
-                <Photo folder="totally-rad" photoId={match.params.id} />
+                <PhotoPage folder="totally-rad" photoId={match.params.id} />
               )}
             />
             <Route
               path="/outside/:id"
               render={({ match }) => (
-                <Photo folder="outside" photoId={match.params.id} />
+                <PhotoPage folder="outside" photoId={match.params.id} />
               )}
             />
             <Route
               path="/climbing/:id"
               render={({ match }) => (
-                <Photo folder="climbing" photoId={match.params.id} />
+                <PhotoPage folder="climbing" photoId={match.params.id} />
               )}
             />
             <Route
               path="/totally-rad"
               render={() => <Collection folder="totally-rad" />}
             />
-            <Route path="/outside" render={() => <Collection folder="outside" />} />
+            <Route
+              path="/outside"
+              render={() => <Collection folder="outside" />}
+            />
             <Route
               path="/climbing"
               render={() => <Collection folder="climbing" />}

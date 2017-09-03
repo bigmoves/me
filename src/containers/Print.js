@@ -6,6 +6,8 @@ import { addToCart } from '../actions';
 import '../components/Print.css';
 
 import Button from '../components/Button';
+import Photo from '../components/Photo';
+import FullscreenOverlay from '../components/FullscreenOverlay';
 
 const options = {
   '8x10': 40,
@@ -18,7 +20,8 @@ const options = {
 class Print extends Component {
   state = {
     size: Object.keys(options)[0],
-    quantity: 1
+    quantity: 1,
+    showFullscreen: false
   };
 
   addToCart = () => {
@@ -41,7 +44,11 @@ class Print extends Component {
         </Link>
 
         <div className="print-content">
-          <div className="image">
+          <div
+            className="image"
+            onClick={() =>
+              this.setState({ showFullscreen: !this.state.showFullscreen })}
+          >
             <img src={require(`../photos/prints/${photo}.jpg`)} alt={photo} />
           </div>
           <div className="print-info">
@@ -66,6 +73,13 @@ class Print extends Component {
             <Button onClick={this.addToCart}>Add to cart</Button>
           </div>
         </div>
+
+        <FullscreenOverlay
+          show={this.state.showFullscreen}
+          onHide={() => this.setState({ showFullscreen: false })}
+        >
+          <Photo photoId={`./prints/${photo}.jpg`} />
+        </FullscreenOverlay>
       </div>
     );
   }

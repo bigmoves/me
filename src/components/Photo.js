@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
 import { string } from 'prop-types';
 
-import './Photo.css';
-
-import PhotoControls from '../containers/PhotoControls';
+import { component } from './Photo.css';
 
 const context = require.context('../photos', true, /\.(jpg|jpeg)$/);
 
 class Photo extends Component {
+  static propTypes = {
+    photoId: string
+  };
+
   render() {
-    if (!this.props.photo) {
+    if (!this.props.photoId) {
       return null;
     }
-
     return (
-      <div className="photo-page">
-        <PhotoControls />
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'contain',
-            backgroundImage: `url(${context(this.props.photo)}`
-          }}
-        />
-      </div>
+      <div
+        className={component}
+        style={{
+          backgroundImage: `url(${context(this.props.photoId)}`
+        }}
+      />
     );
   }
 }

@@ -1,8 +1,8 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
-  align-items: center;
+  flex-basis: 250px;
+  padding-left: 20px;
   margin-bottom: 30px;
   justify-content: center;
 }
@@ -37,6 +37,7 @@
   .sidebar {
     display: block !important;
     text-align: center;
+    padding-left: 0;
   }
 }
 
@@ -55,5 +56,5 @@
 }
 
 .links a {
-  margin-left: 5px;
+  margin-right: 5px;
 }

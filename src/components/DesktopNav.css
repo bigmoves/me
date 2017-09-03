@@ -1,7 +1,11 @@
 .desktop-nav {
   display: none;
-  text-align: center;
   margin-bottom: 30px;
+  text-align: left;
+}
+
+.desktop-nav li {
+  /* margin-bottom: 2px; */
 }
 
 @media (min-width: 800px) {

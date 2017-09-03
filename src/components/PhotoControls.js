@@ -27,11 +27,15 @@ export default class PhotoControls extends Component {
       this.props.prevPhoto();
     }
   };
+
   render() {
     return (
       <div className="photo-controls">
         <div className="click-area-left" onClick={this.props.prevPhoto} />
-        <div className="click-area-center" onClick={this.props.showThumbnails} />
+        <div
+          className="click-area-center"
+          onClick={this.props.showThumbnails}
+        />
         <div className="click-area-right" onClick={this.props.nextPhoto} />
       </div>
     );
