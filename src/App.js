@@ -29,7 +29,6 @@ class App extends Component {
   // Render
   //----------------------------------------------------------------------------
   render() {
-    console.log(this.props);
     return (
       <div className="app">
         <FeatureFlag path="prints">
