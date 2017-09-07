@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+import rootReducer from '../dux';
 import { routerMiddleware } from 'react-router-redux';
 
 const configureStore = (history, preloadedState) => {

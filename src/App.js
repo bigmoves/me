@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { FeatureFlag } from '@crystal-ball/feature-flag';
+
+// Styles
 import './App.css';
 
 // Components
@@ -9,8 +12,6 @@ import Contact from './components/Contact';
 import Cart from './components/Cart';
 import Sidebar from './components/Sidebar';
 import Checkout from './components/Checkout';
-
-import { FeatureFlag } from '@crystal-ball/feature-flag';
 
 // Containers
 import CartToast from './containers/CartToast';
@@ -61,10 +62,7 @@ class App extends Component {
               path="/totally-rad"
               render={() => <Collection folder="totally-rad" />}
             />
-            <Route
-              path="/outside"
-              render={() => <Collection folder="outside" />}
-            />
+            <Route path="/outside" render={() => <Collection folder="outside" />} />
             <Route
               path="/climbing"
               render={() => <Collection folder="climbing" />}

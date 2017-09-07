@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { number, array } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../actions';
+import { removeFromCart } from '../dux/cart';
 
 import './Cart.css';
 

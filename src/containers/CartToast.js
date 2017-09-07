@@ -1,6 +1,5 @@
 import CartToast from '../components/CartToast';
 import { connect } from 'react-redux';
-// import { } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {

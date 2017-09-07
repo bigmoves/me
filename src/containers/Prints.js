@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Collection from '../components/Collection';
-import { setActiveCollection, goToPrint } from '../actions';
+import { setActiveCollection } from '../dux/app';
+import { goToPrint } from '../dux/navigation';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    photos: state.photosByFolder[ownProps.folder]
+    photos: state.photos.photosByFolder[ownProps.folder]
   };
 };
 
