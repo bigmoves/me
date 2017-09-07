@@ -5,9 +5,9 @@ import App from './App';
 // Feature flags
 import { setupFlags } from '@crystal-ball/feature-flag';
 setupFlags({
-  prints: false,
+  prints: true,
   about: false,
-  contact: false
+  contact: true
 });
 
 // Styles

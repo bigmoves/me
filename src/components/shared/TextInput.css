@@ -1,0 +1,9 @@
+:local(.component) {
+  display: block;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  border: 2px solid #eee;
+  border-radius: 3px;
+  width: 100%;
+}

@@ -5,7 +5,7 @@ import { addToCart } from '../dux/cart';
 
 import '../components/Print.css';
 
-import Button from '../components/Button';
+import Button from '../components/shared/Button';
 import Photo from '../components/Photo';
 import FullscreenOverlay from '../components/FullscreenOverlay';
 
