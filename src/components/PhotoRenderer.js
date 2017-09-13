@@ -4,7 +4,8 @@ class PhotoRenderer extends Component {
   state = {
     height: 0,
     shouldRender: false,
-    inView: false
+    inView: false,
+    style: {}
   };
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class PhotoRenderer extends Component {
         if (top < window.outerHeight) {
           this.setState({ shouldRender: true, inView: true }, () => {
             this.props.didRender();
-            this.setState({ style: {} });
+            this.setState({ style: { display: 'none' } });
           });
         }
       }
@@ -32,13 +33,14 @@ class PhotoRenderer extends Component {
           this.setState({ style: {} });
         }, 1000);
       });
+    } else if (this.state.shouldRender && nextProps.kRender) {
+      this.setState({ style: { display: 'block' } });
     }
   }
-  // {((!this.state.shouldRender && kRender) || this.state.shouldRender) &&
-  //   this.props.children(this.state.shouldRender)}
 
   render() {
     const { ratio, didRender, kRender, ...rest } = this.props;
+
     return (
       <div ref={el => (this.el = el)} {...rest} style={this.state.style}>
         {this.state.shouldRender &&

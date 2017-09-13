@@ -36,10 +36,10 @@ class Collection extends Component {
   render() {
     let style = {};
 
-    if (window.matchMedia('(min-width: 800px)').matches) {
-      style.display =
-        this.state.imgLoadCount === this.imgInViewCount ? 'block' : 'none';
-    }
+    // if (window.matchMedia('(min-width: 800px)').matches) {
+    //   style.display =
+    //     this.state.imgLoadCount === this.imgInViewCount ? 'block' : 'none';
+    // }
 
     return (
       <div className="photos" style={style}>
