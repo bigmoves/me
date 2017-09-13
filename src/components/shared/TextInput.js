@@ -26,7 +26,7 @@ export default function TextInputFactory() {
         className={component}
         type="text"
         name={name}
-        palceholder={placeholder}
+        placeholder={placeholder}
         value={context.form.values[name] || ''}
         onChange={event => {
           context.form.inputChange(name, event.target.value);
