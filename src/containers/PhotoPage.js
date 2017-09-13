@@ -4,9 +4,9 @@ import PhotoPage from '../components/PhotoPage';
 import { setActiveCollection, setActivePhoto } from '../dux/app';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.app.activePhoto);
   return {
-    photo: state.app.activePhoto
+    photo: state.app.activePhoto,
+    collection: state.app.activeCollection
   };
 };
 

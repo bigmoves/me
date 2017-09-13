@@ -19,12 +19,12 @@ export function nextPhoto() {
   return (dispatch, getState) => {
     const { activeCollection, activePhoto } = getState().app;
     const photos = getState().photos.photosByFolder[activeCollection];
-    const photoIndex = photos.findIndex(p => p.indexOf(activePhoto) > -1);
+    const photoIndex = photos.findIndex(p => p.path.indexOf(activePhoto) > -1);
 
     if (photos[photoIndex + 1]) {
       dispatch(
         push(
-          `/${activeCollection}/${photos[photoIndex + 1]
+          `/${activeCollection}/${photos[photoIndex + 1].path
             .replace(/^.*[\\\/]/, '')
             .split('.')
             .shift()}`
@@ -38,12 +38,12 @@ export function prevPhoto() {
   return (dispatch, getState) => {
     const { activeCollection, activePhoto } = getState().app;
     const photos = getState().photos.photosByFolder[activeCollection];
-    const photoIndex = photos.findIndex(p => p.indexOf(activePhoto) > -1);
+    const photoIndex = photos.findIndex(p => p.path.indexOf(activePhoto) > -1);
 
     if (photos[photoIndex - 1]) {
       dispatch(
         push(
-          `/${activeCollection}/${photos[photoIndex - 1]
+          `/${activeCollection}/${photos[photoIndex - 1].path
             .replace(/^.*[\\\/]/, '')
             .split('.')
             .shift()}`

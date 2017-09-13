@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 // Gets all of the image filenames in the /photos directory
-const context = require.context('../prints', true, /\.(jpg|jpeg)$/);
+const context = require.context('../photos/prints', true, /\.(jpg|jpeg)$/);
 const photos = context.keys();
 
 // Re-formats the file path context returns in order to require the photo
@@ -20,7 +20,7 @@ class Prints extends Component {
   render() {
     return (
       <div className="prints">
-        {photos.map((photo, i) =>
+        {photos.map((photo, i) => (
           <div
             className="print"
             key={i}
@@ -28,7 +28,7 @@ class Prints extends Component {
           >
             <img src={require(filePath(photo))} alt="photo" />
           </div>
-        )}
+        ))}
       </div>
     );
   }
