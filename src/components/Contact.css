@@ -1,0 +1,25 @@
+:local(.component) {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 100px;
+}
+
+:local(.component) textarea {
+  height: 100px;
+}
+
+:local(.component) .form {
+  width: 200px;
+}
+
+@media (max-width: 800px) {
+  :local(.component) {
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  :local(.component) .form {
+    width: 100%;
+  }
+}

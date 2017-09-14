@@ -6,7 +6,7 @@ import { removeFromCart } from '../dux/cart';
 
 import './Cart.css';
 
-import Button from './Button';
+import Button from './shared/Button';
 
 class Cart extends Component {
   static propTypes = {

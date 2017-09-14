@@ -7,7 +7,7 @@ import { setupFlags } from '@crystal-ball/feature-flag';
 setupFlags({
   prints: false,
   about: false,
-  contact: false
+  contact: false 
 });
 
 // Styles
