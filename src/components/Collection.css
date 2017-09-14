@@ -1,3 +1,18 @@
+.container {
+  position: relative;
+}
+
+.placeholder-photos {
+  background: #fff;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+}
+
 .photos {
   /* Prevent vertical gaps */
   line-height: 0;
@@ -5,7 +20,7 @@
   column-gap: 10px;
 }
 
-.photos img {
+.photos .photo img {
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;

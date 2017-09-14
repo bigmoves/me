@@ -4,23 +4,16 @@ import { string, func } from 'prop-types';
 
 import './Collection.css';
 
-import PhotoRenderer from './PhotoRenderer';
+import PhotoPlaceholder from './PhotoPlaceholder';
 
 class Collection extends Component {
-  constructor(props) {
-    super(props);
-
-    this.imgInViewCount = 0;
-  }
-
   static propTypes = {
     folder: string.isRequired,
     selectPhoto: func
   };
 
   state = {
-    imgLoadCount: 0,
-    imgInViewCount: 0
+    imgLoadCount: 0
   };
 
   // componentDidMount() {
@@ -33,53 +26,53 @@ class Collection extends Component {
   //   }, 0);
   // }
 
-  render() {
-    let style = {};
+  renderPhotos() {
+    return this.props.photos.map((photo, i) => (
+      <div
+        id={photo.path}
+        key={i}
+        className="photo"
+        onClick={() => {
+          // only allow click through to photo page on desktop
+          if (window.matchMedia('(min-width: 800px)').matches) {
+            this.props.selectPhoto(this.props.folder, photo.path);
+          }
+        }}
+      >
+        <img
+          src={require(`../photos/${photo.collection}/${photo.filename}`)}
+          alt={photo.path}
+          onLoad={() => {
+            this.setState({
+              imgLoadCount: this.state.imgLoadCount + 1
+            });
+          }}
+        />
+      </div>
+    ));
+  }
 
-    // if (window.matchMedia('(min-width: 800px)').matches) {
-    //   style.display =
-    //     this.state.imgLoadCount === this.imgInViewCount ? 'block' : 'none';
-    // }
+  renderPlaceholderPhotos() {
+    return this.props.photos.map((photo, i) => (
+      <PhotoPlaceholder key={i} ratio={photo.width / photo.height} />
+    ));
+  }
+
+  render() {
+    const isLoading =
+      window.matchMedia('(min-width: 800px)').matches &&
+      this.state.imgLoadCount !== this.props.photos.length;
 
     return (
-      <div className="photos" style={style}>
-        {this.props.photos.map((photo, i) => (
-          <PhotoRenderer
-            id={photo.path}
-            key={i}
-            className="photo"
-            onClick={() => {
-              // only allow click through to photo page on desktop
-              if (window.matchMedia('(min-width: 800px)').matches) {
-                this.props.selectPhoto(this.props.folder, photo.path);
-              }
-            }}
-            ratio={photo.width / photo.height}
-            didRender={() => (this.imgInViewCount += 1)}
-            kRender={
-              this.imgInViewCount !== 0 &&
-              this.state.imgLoadCount === this.imgInViewCount
-            }
-          >
-            {(inView, shouldRender) => {
-              if (shouldRender) {
-                return (
-                  <img
-                    src={require(`../photos/${photo.collection}/${photo.filename}`)}
-                    alt={photo.path}
-                    onLoad={() => {
-                      if (inView) {
-                        this.setState({
-                          imgLoadCount: this.state.imgLoadCount + 1
-                        });
-                      }
-                    }}
-                  />
-                );
-              }
-            }}
-          </PhotoRenderer>
-        ))}
+      <div className="container">
+        {isLoading ? (
+          <div className="placeholder-photos">
+            <div className="photos">{this.renderPlaceholderPhotos()}</div>
+          </div>
+        ) : null}
+        <div className="actual-photos">
+          <div className="photos">{this.renderPhotos()}</div>
+        </div>
       </div>
     );
   }
