@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { emojify } from 'react-emojione';
+import config from '../config';
 
 // Components
 import Form from './shared/Form';
@@ -10,20 +12,38 @@ const Input = new TextInput();
 import { component } from './Contact.css';
 
 export default class Contact extends Component {
-  handleSubmit = values => {
-    console.log(values);
+  state = {
+    submitSuccess: false
+  };
+
+  handleSubmit = (values, reset) => {
+    fetch(`${config.API_HOST}/contact/sendEmail`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(() => this.setState({ submitSuccess: true }));
   };
 
   render() {
     return (
       <div className={component}>
-        <Form onSubmit={this.handleSubmit}>
-          <Input name="firstName" placeholder="First name" />
-          <Input name="lastName" placeholder="Last name" />
-          <Input name="email" placeholder="Email" />
-          <Input As="textarea" name="message" placeholder="Message" />
-          <SubmitButton>Submit</SubmitButton>
-        </Form>
+        {this.state.submitSuccess ? (
+          <div style={{ textAlign: 'center' }}>
+            <p>{'Thanks for reaching out! '}</p>
+            <div>{emojify(':octo:')}</div>
+          </div>
+        ) : (
+          <Form onSubmit={this.handleSubmit}>
+            <Input name="firstName" placeholder="First name" />
+            <Input name="lastName" placeholder="Last name" />
+            <Input name="email" placeholder="Email" />
+            <Input As="textarea" name="message" placeholder="Message" />
+            <SubmitButton>Submit</SubmitButton>
+          </Form>
+        )}
       </div>
     );
   }

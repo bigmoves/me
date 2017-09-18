@@ -4338,6 +4338,10 @@ react-dom@^15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-emojione@^3.1.10:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/react-emojione/-/react-emojione-3.1.10.tgz#2c233446c61f676381358b0573ea8d39b71e45b8"
+
 react-redux@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"

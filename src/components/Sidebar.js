@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
+import { emojify } from 'react-emojione';
 
 // Components
 import MobileNav from './MobileNav';
@@ -24,14 +25,12 @@ export default class Sidebar extends Component {
         <DesktopNav />
         <div className="links">
           <a href="https://www.instagram.com/chadtmiller" target="_blank">
-            <img src={instagram} />
+            {emojify(':camera_with_flash:')}
           </a>
           <a href="https://github.com/bigmoves" target="_blank">
-            <img src={github} />
+            {emojify(':octopus:')}
           </a>
-          <a href="mailto:chadtmiller15@gmail.com">
-            <img src={paperplane} width="24" height="28" />
-          </a>
+          <a href="mailto:chadtmiller15@gmail.com">{emojify(':e-mail:')}</a>
         </div>
         <Route
           path="(/climbing/.*|/outside/.*|/totally-rad/.*)"

@@ -20,11 +20,13 @@ class Form extends Component {
   };
 
   getChildContext() {
+    const reset = () => this.setState({ values: {} });
+
     return {
       form: {
         values: this.state.values,
-        reset: () => this.setState({ values: {} }),
-        submit: () => this.props.onSubmit(this.state.values),
+        reset,
+        submit: () => this.props.onSubmit(this.state.values, reset),
         inputChange: (key, value) => {
           this.setState({
             values: {

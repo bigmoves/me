@@ -22,21 +22,22 @@ export default function TextInputFactory() {
 
   function TextInput({ As, name, placeholder }, context) {
     return (
-      <As
-        className={component}
-        type="text"
-        name={name}
-        placeholder={placeholder}
-        value={context.form.values[name] || ''}
-        onChange={event => {
-          context.form.inputChange(name, event.target.value);
-        }}
-        onKeyDown={event => {
-          if (event.key === 'Enter') {
-            context.form.submit();
-          }
-        }}
-      />
+      <div className={component}>
+        <As
+          type="text"
+          name={name}
+          placeholder={placeholder}
+          value={context.form.values[name] || ''}
+          onChange={event => {
+            context.form.inputChange(name, event.target.value);
+          }}
+          onKeyDown={event => {
+            if (event.key === 'Enter') {
+              context.form.submit();
+            }
+          }}
+        />
+      </div>
     );
   }
 
