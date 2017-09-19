@@ -31,10 +31,18 @@ export function setActiveCollection(collection) {
 }
 
 export function setActivePhoto(photo) {
+  console.log('photo', photo);
   return (dispatch, getState) => {
     const photos = getState().photos.photos;
-    const photoMeta = photos.find(p => p.path.indexOf(photo) > -1);
+    let filename = '';
 
-    dispatch({ type: SET_ACTIVE_PHOTO, photo: photoMeta.filename });
+    if (photo) {
+      const photoMeta = photos.find(p => p.path.indexOf(photo) > -1);
+      if (photoMeta) {
+        filename = photoMeta.filename;
+      }
+    }
+
+    dispatch({ type: SET_ACTIVE_PHOTO, photo: filename });
   };
 }
