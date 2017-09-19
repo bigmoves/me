@@ -7,11 +7,6 @@ import MobileNav from './MobileNav';
 import DesktopNav from './DesktopNav';
 import SidebarPhotoControls from '../containers/SidebarPhotoControls';
 
-// Svgs
-import instagram from '../icons/instagram.svg';
-import github from '../icons/github.svg';
-import paperplane from '../icons/paperplane.svg';
-
 import './Sidebar.css';
 
 export default class Sidebar extends Component {
@@ -25,7 +20,7 @@ export default class Sidebar extends Component {
         <DesktopNav />
         <div className="links">
           <a href="https://www.instagram.com/chadtmiller" target="_blank">
-            {emojify(':camera_with_flash:')}
+            {emojify(':camera:')}
           </a>
           <a href="https://github.com/bigmoves" target="_blank">
             {emojify(':octopus:')}

@@ -26,11 +26,9 @@ export default class Nav extends Component {
               <NavLink to="/about">About</NavLink>
             </li>
           </FeatureFlag>
-          <FeatureFlag path="contact">
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-          </FeatureFlag>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
         </ul>
       </nav>
     );

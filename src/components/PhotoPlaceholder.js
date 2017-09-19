@@ -15,17 +15,9 @@ class PhotoPlaceholder extends Component {
 
   componentDidMount() {
     const height = this.el.offsetWidth / this.props.ratio;
-    this.setState(
-      {
-        style: { height: height + 10 }
-      },
-      () => {
-        const top = this.el.getBoundingClientRect().top;
-        if (top < window.outerHeight) {
-          // this.setState({ render: true });
-        }
-      }
-    );
+    this.setState({
+      style: { height: height + 10 }
+    });
   }
 
   render() {
