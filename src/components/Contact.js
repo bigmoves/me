@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { emojify } from 'react-emojione';
 import config from '../config';
 
 // Components
@@ -33,7 +32,7 @@ export default class Contact extends Component {
         {this.state.submitSuccess ? (
           <div style={{ textAlign: 'center' }}>
             <p>{'Thanks for reaching out! '}</p>
-            <div>{emojify(':octo:')}</div>
+            <div>👍</div>
           </div>
         ) : (
           <Form onSubmit={this.handleSubmit}>
