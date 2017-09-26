@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FeatureFlag } from '@crystal-ball/feature-flag';
+import { func } from 'prop-types';
+
+// Components
+import Form from './shared/Form';
+import TextInput from './shared/TextInput';
+const Input = new TextInput();
+import SubmitButton from './shared/SubmitButton';
 
 export default class Nav extends Component {
+  static propTypes = {
+    createCollection: func
+  };
+
   render() {
     return (
-      <nav {...this.props}>
+      <nav className={this.props.className}>
         <ul>
           <li>
             <NavLink to="/outside">Out there</NavLink>
@@ -15,6 +26,17 @@ export default class Nav extends Component {
           </li>
           <li>
             <NavLink to="/climbing">Shredding gnar</NavLink>
+          </li>
+          {this.props.collections.map((collection, i) => (
+            <li key={i}>
+              <NavLink to={`/${collection.name}`}>{collection.name}</NavLink>
+            </li>
+          ))}
+          <li>
+            <Form onSubmit={this.props.createCollection}>
+              <Input name="name" placeholder="Collection name" />
+              <SubmitButton>Add collection</SubmitButton>
+            </Form>
           </li>
           <FeatureFlag path="prints">
             <li>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './containers/App';
 
 // Feature flags
 import { setupFlags } from '@crystal-ball/feature-flag';

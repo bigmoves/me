@@ -31,7 +31,6 @@ export function setActiveCollection(collection) {
 }
 
 export function setActivePhoto(photo) {
-  console.log('photo', photo);
   return (dispatch, getState) => {
     const photos = getState().photos.photos;
     let filename = '';

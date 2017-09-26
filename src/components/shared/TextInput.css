@@ -12,3 +12,8 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+:local(.component) input:focus,
+:local(.component) textarea:focus {
+  border-color: aqua;
+}

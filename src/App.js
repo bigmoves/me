@@ -19,6 +19,7 @@ import Collection from './containers/Collection';
 import PhotoPage from './containers/PhotoPage';
 import Prints from './containers/Prints';
 import Print from './containers/Print';
+import RemoteCollection from './containers/RemoteCollection';
 
 /**
  * Main app component
@@ -67,6 +68,13 @@ class App extends Component {
               path="/climbing"
               render={() => <Collection folder="climbing" />}
             />
+            {this.props.collections.map((collection, i) => (
+              <Route
+                key={i}
+                path={`/${collection.name}`}
+                render={() => <RemoteCollection collection={collection} />}
+              />
+            ))}
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/print/:id" component={Print} />

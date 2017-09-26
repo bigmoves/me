@@ -7,12 +7,14 @@ import cart from './cart';
 import navigation from './navigation';
 import photoControls from './photo-controls';
 import photos from './photos';
+import collections from './collections';
 
 const rootReducer = combineReducers({
   app,
   cart,
-  photos,
+  collections,
   navigation,
+  photos,
   photoControls,
   router: routerReducer
 });
